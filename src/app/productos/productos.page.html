@@ -9,16 +9,21 @@
 
 <ion-content [fullscreen]="true">
   <ion-list *ngIf="productos">
-    <ion-item *ngFor="let producto of productos">
+    <ion-item *ngFor="let producto of productos; let i = index">
       <ion-avatar slot="start">
         <img [src]="producto.thumbnail" alt="{{ producto.title }}" />
       </ion-avatar>
       <ion-label>
-        <h2>{{ producto.title }}</h2>
+        <h2>{{ i + 1 }}. {{ producto.title }}</h2> <!-- Muestra el número antes del nombre del producto -->
         <p style="color: blue; font-weight: bold;">$ {{ producto.price }}</p>
         <p style="color: green;">{{ producto.discountPercentage }} %</p>
       </ion-label>
       <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
     </ion-item>
   </ion-list>
+
+  <!-- Infinite Scroll -->
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="cargarMasProductos($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="Cargando más productos..."></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
 </ion-content>
