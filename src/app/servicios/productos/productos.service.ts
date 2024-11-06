@@ -10,7 +10,7 @@ import { AuthService } from './../auth/auth.service';
 })
 export class ProductosService {
   private readonly URL_PRODUCTOS = 'https://dummyjson.com/auth/products';
-  private cantidad = 30 ;
+  private cantidad = 0 ;
   private total = 0;
   private $productos = new BehaviorSubject<Producto[]>([]);
   public producto = this.$productos.asObservable();
@@ -49,6 +49,5 @@ export class ProductosService {
         this.total = datos.total;
       });
     }
-  
 
 }

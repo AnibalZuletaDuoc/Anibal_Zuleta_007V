@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class ProductosPage implements ViewWillEnter, ViewDidLeave {
   public productos: Producto[] = [];
   private subProucto!: Subscription;
-  skip: number = 30; // índice
+  skip: number = 0; // índice
   limit: number = 30; // número de productos a cargar
 
   constructor(
@@ -33,17 +33,6 @@ export class ProductosPage implements ViewWillEnter, ViewDidLeave {
     });
     this.prdS.listarProductos();
   }
-
-  cargarMasProductos(event?: any): void {
-    this.skip += this.limit;  // Incrementa el valor de skip para la siguiente carga
-    this.prdS.CargarProductos(this.skip, this.limit);  // Llama al servicio para cargar más productos
-  
-    if (event) {
-      event.target.complete();  // Completa el evento de infinite scroll
-    }
-  }
-  
-  
   
   public volver() {
     this.router.navigate(['/', 'iniciarsesion']);

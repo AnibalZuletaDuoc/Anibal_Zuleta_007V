@@ -9,13 +9,13 @@
     <ion-row>
       <ion-col size="12">
         <ion-card>
+          <ion-img src="./../../assets/hola.png" class="custom-image"></ion-img>
+
+
           <ion-card-header>
-            <ion-card-title>
+            <ion-card-title class="ion-text-center">
               Bienvenido
             </ion-card-title>
-            <ion-card-subtitle>
-              Ingresa tus datos para iniciar sesión
-            </ion-card-subtitle>
           </ion-card-header>
           <ion-card-content>
             <form [formGroup]="formulario" (submit)="validarForm()">
@@ -28,6 +28,14 @@
                 <ion-row>
                   <ion-col>
                     <ion-input formControlName="contra" label="Ingrese su contraseña" labelPlacement="floating" fill="outline" type="password"></ion-input>
+                  </ion-col>
+                </ion-row>
+                <ion-row>
+                  <ion-col>
+                    <ion-item>
+                      <ion-label>Recuérdame</ion-label>
+                      <ion-toggle></ion-toggle>
+                    </ion-item>                    
                   </ion-col>
                 </ion-row>
                 <ion-row>
