@@ -3,6 +3,7 @@ import { ProductosService } from './../servicios/productos/productos.service';
 import { Producto } from './../interfaces/telefono';
 import { ViewWillEnter, ViewDidLeave } from '@ionic/angular';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router'
 
 @Component({
   selector: 'app-productos',
@@ -14,6 +15,7 @@ export class ProductosPage implements ViewWillEnter,ViewDidLeave  {
   private subProucto!: Subscription;
   constructor(
     private prdS: ProductosService,
+    private router: Router
   ) {
 
   }
@@ -30,4 +32,9 @@ export class ProductosPage implements ViewWillEnter,ViewDidLeave  {
     });
     this.prdS.listarProductos();
   }
+
+  public volver() {
+    this.router.navigate(['/', 'iniciarsesion'])
+  }
 }
+
