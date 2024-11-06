@@ -18,7 +18,7 @@ export class IniciarsesionPage implements ViewWillEnter, ViewDidLeave{
     private auth: AuthService,
   ) {
     this.formulario = fb.group({
-      usuario: ['',[ Validators.required]],
+      nombre_usuario: ['',[ Validators.required]],
       contra: ['',[ Validators.required]],
     }) 
    }
@@ -28,9 +28,9 @@ export class IniciarsesionPage implements ViewWillEnter, ViewDidLeave{
       return
     }
     const datos = this.formulario.getRawValue();
-    const usuario = datos ['usuarios'];
-    const contra = datos['contrasenia'];
-    this.auth.iniciarSecion(usuario, contra);
+    const nombre_usuario = datos ['nombre_usuario'];
+    const contra = datos['contra'];
+    this.auth.iniciarSecion(nombre_usuario, contra);
    }
 
   ionViewWillEnter(): void {
@@ -41,6 +41,8 @@ export class IniciarsesionPage implements ViewWillEnter, ViewDidLeave{
   }
 
   ionViewDidLeave(): void {
-    
-  }
+    if(this.subCharge){
+      this.subCharge.unsubscribe()
+    };  
+  } 
 }

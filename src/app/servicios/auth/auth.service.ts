@@ -30,14 +30,14 @@ export class AuthService {
     }
     this.Http.post<usuarioLogeado>(this.URL_LOGIN, JSON.stringify(cuerpo),{
       headers:{
-        'content-type': 'aplicacion-json'
+        'Content-type': 'application/json'
       }
     })
     .subscribe(resultado => {
       this.usuarioLogeado = resultado;
       this.accessToken = resultado.accessToken;
       console.log(resultado);
-      this.router.navigate(['/','productos'])
+      this.router.navigate(['/', 'productos'])
 
     });
   }
